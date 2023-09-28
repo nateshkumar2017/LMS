@@ -1,5 +1,6 @@
 package com.mlms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,10 +16,10 @@ import java.util.List;
 public class Test {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+//Long
 
-    private String testId;
 
     private String testName;
 
@@ -32,22 +33,19 @@ public class Test {
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
+    @JsonIgnore
     private Patient patientId;
 
     @OneToOne(mappedBy = "test")
+    @JsonIgnore
     private TestResult testResult;
 
     @OneToMany(mappedBy = "test")
+    @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
 
 
-    @PrePersist
-    public void generateTestId() {
-        if (testId == null) {
-            testId = "t_" + (id + 100);
-        }
-    }
 
 
 }

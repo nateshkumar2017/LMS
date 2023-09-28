@@ -13,21 +13,13 @@ import lombok.NoArgsConstructor;
 public class Report {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private String reportId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
 
     @OneToOne(mappedBy = "report")
     private TestResult testResultId;
 
 
-    @PrePersist
-    public void generateReportId() {
-        if (reportId == null) {
-            reportId = "re_" + (id + 100);
-        }
-    }
 
 
 }

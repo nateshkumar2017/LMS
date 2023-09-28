@@ -13,10 +13,8 @@ import lombok.NoArgsConstructor;
 public class ReportStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private String statusId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
 
     @Enumerated(EnumType.STRING)
     private StatusType status;
@@ -24,13 +22,6 @@ public class ReportStatus {
     public enum StatusType {
         AVAILABLE,
         PENDING
-    }
-
-    @PrePersist
-    public void generateStatusId() {
-        if (statusId == null) {
-            statusId = "s_" + (id + 100);
-        }
     }
 
 

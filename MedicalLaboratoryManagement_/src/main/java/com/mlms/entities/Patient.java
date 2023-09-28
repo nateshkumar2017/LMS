@@ -15,9 +15,8 @@ import java.util.List;
 public class Patient {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String patientId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
 
     private String patientName;
 
@@ -44,12 +43,7 @@ public class Patient {
 
 
 
-    @PrePersist
-    public void generatePatientId() {
-        if (patientId == null) {
-            patientId = "p_" + (id + 100);
-        }
-    }
+
 
 
 

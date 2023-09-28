@@ -21,10 +21,9 @@ import java.util.Date;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
 
-    private String orderId;
 
     //private User userId;
 
@@ -54,12 +53,7 @@ public class Order {
 //    private User user;
 
 
-    @PrePersist
-    public void generateOrderId() {
-        if (orderId == null) {
-            orderId = "p_" + (id + 100);
-        }
-    }
+
 
 //    public Order(User user) {
 //        this.user = user;

@@ -12,10 +12,8 @@ import lombok.NoArgsConstructor;
 public class TestResult {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private String resultid;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
@@ -32,12 +30,7 @@ public class TestResult {
 
     private float result;
 
-    @PrePersist
-    public void generateTestResultId() {
-        if (resultid == null) {
-            resultid = "tr_" + (id + 100);
-        }
-    }
+
 
 
 }

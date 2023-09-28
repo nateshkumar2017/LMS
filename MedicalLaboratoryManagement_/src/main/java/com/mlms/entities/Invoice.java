@@ -13,10 +13,11 @@ import lombok.NoArgsConstructor;
 public class Invoice {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
 
-    private String invoiceId;
+//    @Column(unique=true)
+//    private String invoiceId;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
@@ -34,10 +35,5 @@ public class Invoice {
 
     private float discount;
 
-    @PrePersist
-    public void generateInvoiceId() {
-        if (invoiceId == null) {
-            invoiceId = "in_" + (id + 100);
-        }
-    }
+
 }
