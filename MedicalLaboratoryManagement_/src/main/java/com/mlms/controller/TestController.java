@@ -25,7 +25,7 @@ public class TestController {
 
     @GetMapping("/{testCode}")
     public Test getTestById(@PathVariable String testCode){
-        return testServiceInt.getTestByTestId(testCode);
+        return testServiceInt.getTestByTestCode(testCode);
     }
 
     @PostMapping
@@ -35,13 +35,13 @@ public class TestController {
 
     @PutMapping("/{testCode}")
     public Test updateTest(@PathVariable String testCode, @RequestBody Test updatedTest){
-        Test updated = testServiceInt.updateTestByTestId(testCode, updatedTest);
+        Test updated = testServiceInt.updateTestByTestCode(testCode, updatedTest);
         return updated;
     }
 
     @DeleteMapping("/{testCode}")
     public String deleteTest(@PathVariable String testCode){
-        testServiceInt.deleteTestByTestId(testCode);
+        testServiceInt.deleteTestByTestCode(testCode);
         return "Test Removed";
     }
 

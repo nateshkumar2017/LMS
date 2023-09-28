@@ -9,9 +9,9 @@ import java.util.Optional;
 public interface TestServiceInt {
 
     public List<Test> getAllTests();
-    public Test getTestByTestId(String testCode);
+    public Test getTestByTestCode(String testCode);
     public Test createTest(Test test);
-    public Test updateTestByTestId(String testCode, Test updatedTest);
-    public void deleteTestByTestId(String testCode);
+    public Test updateTestByTestCode(String testCode, Test updatedTest);
+    public void deleteTestByTestCode(String testCode);
 
 }

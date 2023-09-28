@@ -1,6 +1,7 @@
 package com.mlms.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,10 +28,6 @@ public class Test {
 
     private float price;
 
-    private float normalRange;
-
-    private String unit;
-
     @ManyToOne
     @JoinColumn(name = "patient_id")
     @JsonIgnore
@@ -43,6 +40,10 @@ public class Test {
     @OneToMany(mappedBy = "test")
     @JsonIgnore
     private List<Order> orders = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+    private List<TestAttribute> testAttributes = new ArrayList<>();
 
 
 

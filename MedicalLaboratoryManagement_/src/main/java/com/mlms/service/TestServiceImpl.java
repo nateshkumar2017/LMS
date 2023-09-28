@@ -1,6 +1,7 @@
 package com.mlms.service;
 
 import com.mlms.entities.Test;
+import com.mlms.entities.TestAttribute;
 import com.mlms.repo.TestRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TestServiceImpl implements TestServiceInt{
+public class TestServiceImpl implements TestServiceInt {
 
     private final TestRepo testRepository;
 
@@ -21,25 +22,30 @@ public class TestServiceImpl implements TestServiceInt{
         return testRepository.findAll();
     }
 
-    public Test getTestByTestId(String testCode) {
+    public Test getTestByTestCode(String testCode) {
         return testRepository.findByTestCode(testCode);
     }
 
     public Test createTest(Test test) {
-        if (test.getId() == 0) {
-            test.setId( (test.getId()));
+        for (TestAttribute attribute : test.getTestAttributes()) {
+            attribute.setTest(test);
         }
+
         return testRepository.save(test);
     }
 
-    public Test updateTestByTestId(String testCode, Test updatedTest) {
+    public Test updateTestByTestCode(String testCode, Test updatedTest) {
         Test existingTest = testRepository.findByTestCode(testCode);
         if (existingTest != null) {
             existingTest.setTestName(updatedTest.getTestName());
             existingTest.setTestCode(updatedTest.getTestCode());
             existingTest.setPrice(updatedTest.getPrice());
-            existingTest.setNormalRange(updatedTest.getNormalRange());
-            existingTest.setUnit(updatedTest.getUnit());
+
+            existingTest.getTestAttributes().clear();
+            for (TestAttribute updatedAttribute : updatedTest.getTestAttributes()) {
+                updatedAttribute.setTest(existingTest);
+                existingTest.getTestAttributes().add(updatedAttribute);
+            }
 
             return testRepository.save(existingTest);
         } else {
@@ -47,7 +53,7 @@ public class TestServiceImpl implements TestServiceInt{
         }
     }
 
-    public void deleteTestByTestId(String testCode) {
+    public void deleteTestByTestCode(String testCode) {
         Test existingTest = testRepository.findByTestCode(testCode);
         if (existingTest != null) {
             testRepository.delete(existingTest);
@@ -55,5 +61,4 @@ public class TestServiceImpl implements TestServiceInt{
             throw new RuntimeException("Test Not Found");
         }
     }
-
 }
