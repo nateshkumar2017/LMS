@@ -1,6 +1,7 @@
 package com.mlms.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +35,7 @@ public class Patient {
     @OneToMany(mappedBy = "patientId")
     private List<TestResult> testResults;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "patient")
     private List<Order> orders;
 

@@ -19,6 +19,8 @@ public class ReportStatus {
     @Enumerated(EnumType.STRING)
     private StatusType status;
 
+
+
     public enum StatusType {
         AVAILABLE,
         PENDING
