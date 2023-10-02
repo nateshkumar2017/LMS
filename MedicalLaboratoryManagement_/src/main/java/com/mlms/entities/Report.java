@@ -14,7 +14,7 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    private Long id;
 
     @OneToOne(mappedBy = "report")
     private TestResult testResultId;

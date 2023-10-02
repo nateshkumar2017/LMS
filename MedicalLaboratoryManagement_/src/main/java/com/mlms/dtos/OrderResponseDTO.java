@@ -25,5 +25,5 @@ public class OrderResponseDTO {
     private float amountAfterDiscount;
     private long invoiceId;
 
-    // Getter and setter methods
+
 }
