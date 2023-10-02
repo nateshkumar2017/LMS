@@ -1,6 +1,7 @@
 package com.mlms.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,16 +31,20 @@ public class Patient {
     private String contactNo;
 
     @OneToMany(mappedBy = "patientId")
+    @JsonIgnore
     private List<Test> tests;
 
     @OneToMany(mappedBy = "patientId")
+    @JsonIgnore
     private List<TestResult> testResults;
 
     @Transient
     @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     private List<Order> orders;
 
     @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     private List<Invoice> invoices;
 
 
