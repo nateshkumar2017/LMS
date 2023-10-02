@@ -1,5 +1,6 @@
 package com.mlms.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,9 @@ public class TestAttributeResultDTO {
 //    private Long testId;
 //    private List<TestAttributeResultDTO> attributeResults;
 
+    @JsonIgnore
     private Long attributeId;
     private Float result;
+    private String attributeName;
+    private String normalValue;
 }
