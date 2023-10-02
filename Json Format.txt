@@ -1,0 +1,31 @@
+Registering Patient:
+{
+    "patientName": "",
+    "gender": "",
+    "age": ,
+    "referedBy": "",
+    "contactNo": ""
+}
+
+Creating Order:
+{
+  "contactNo": "", 
+  "testCodes": [""], 
+  "discount":  
+}
+
+Generating Test Results:
+{
+  "orderId": ,
+  "testId": ,
+  "attributesResults": [
+    {
+      "attributeId": ,
+      "result": 
+    },
+    {
+      "attributeId": ,
+      "result": 
+    }
+  ]
+}
