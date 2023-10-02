@@ -28,7 +28,6 @@ public class PatientController {
 
     @PostMapping
     public Patient createPatient(@RequestBody Patient patient){
-        // Save the patient information to the database
         Patient createdPatient = patientService.createPatient(patient);
         return createdPatient;
     }

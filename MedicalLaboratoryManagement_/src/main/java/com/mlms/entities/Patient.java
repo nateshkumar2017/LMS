@@ -35,7 +35,7 @@ public class Patient {
     @OneToMany(mappedBy = "patientId")
     private List<TestResult> testResults;
 
-    @JsonManagedReference
+    @Transient
     @OneToMany(mappedBy = "patient")
     private List<Order> orders;
 

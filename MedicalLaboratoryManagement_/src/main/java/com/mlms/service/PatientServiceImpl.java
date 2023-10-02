@@ -4,6 +4,7 @@ import com.mlms.entities.Patient;
 import com.mlms.repo.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class PatientServiceImpl implements PatientServiceInt{
 
         @Override
         public Patient createPatient(Patient patient) {
-            // Save the patient to the database
+
             Patient createdPatient = patientRepository.save(patient);
             return createdPatient;
         }

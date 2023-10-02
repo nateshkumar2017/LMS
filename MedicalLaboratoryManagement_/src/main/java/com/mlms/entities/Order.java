@@ -1,5 +1,6 @@
 package com.mlms.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "patient_id")
     @JsonIgnore
+    @JsonBackReference
     private Patient patient;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
