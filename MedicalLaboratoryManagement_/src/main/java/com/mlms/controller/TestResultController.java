@@ -29,25 +29,7 @@ public class TestResultController {
     @Autowired
     private ReportStatusRepo reportStatusRepository;
 
-
-
-//    @PostMapping("/create")
-//    public TestResult createTestResult(
-//            @RequestParam Long orderId,
-//            @RequestParam Long testId,
-//            @RequestBody List<TestAttributeResultDTO> attributeResults
-//    ) {
-//        return testResultService.createTestResult(orderId, testId, attributeResults);
-//    }
-
-//    @PostMapping("/create")
-//    public List<TestResult> createTestResults(@RequestBody TestResultDTO testResultDTO) {
-//        Long orderId = testResultDTO.getOrderId();
-//        Long testId = testResultDTO.getTestId();
-//        List<TestAttributeResultDTO> attributeResults = testResultDTO.getAttributesResults();
-//        return testResultService.createTestResults(orderId, testId, attributeResults);
-//    }
-
+    
     @PostMapping("/create")
     public List<TestResult> createTestResults(@RequestBody TestResultDTO testResultDTO) {
         Long orderId = testResultDTO.getOrderId();

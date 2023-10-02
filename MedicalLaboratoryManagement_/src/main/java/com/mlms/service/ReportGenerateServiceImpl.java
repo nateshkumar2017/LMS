@@ -25,27 +25,26 @@ public class ReportGenerateServiceImpl {
     private TestRepo testRepository;
 
     public ReportDTO generateReport(Long orderId) {
-        // Fetch order information
+
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("Order not found with ID: " + orderId));
 
-        // Fetch test information
+
         Test test = order.getTest();
 
-        // Fetch patient information
+
         Patient patient = order.getPatient();
 
-        // Create a ReportDTO and populate it with the required data
+
         ReportDTO report = new ReportDTO();
         report.setPatientName(patient.getPatientName());
         report.setPatientAge(patient.getAge());
         report.setPatientContactNumber(patient.getContactNo());
-        //report.setPatientGender(patient.getGender());
+
         report.setPatientGender(String.valueOf(patient.getGender()));
         report.setOrderNo(orderId);
         report.setTestName(test.getTestName());
 
-        // Fetch and populate test attributes and results
         List<TestAttributeResultDTO> testAttributes = new ArrayList<>();
         List<TestAttribute> attributes = test.getTestAttributes();
         for (TestAttribute attribute : attributes) {

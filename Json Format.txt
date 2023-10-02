@@ -29,3 +29,20 @@ Generating Test Results:
     }
   ]
 }
+
+Enter New Test:
+{
+  "testName": "New Test Name",
+  "testCode": "NT001",
+  "price": 50.0,
+  "testAttributes": [
+    {
+      "attributeName": "Attribute 1",
+      "normalValue": "Normal 1"
+    },
+    {
+      "attributeName": "Attribute 2",
+      "normalValue": "Normal 2"
+    }
+  ]
+}
