@@ -33,7 +33,8 @@ public class Test {
     @JsonIgnore
     private Patient patientId;
 
-    @OneToOne(mappedBy = "test")
+    @ManyToOne
+    @JoinColumn(name = "test_result_id")
     @JsonIgnore
     private TestResult testResult;
 

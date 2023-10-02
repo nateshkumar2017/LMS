@@ -15,12 +15,14 @@ public class TestResult {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
+    //hatao
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patientId;
 
 
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "test_id")
     private Test test;
 
@@ -29,6 +31,15 @@ public class TestResult {
     private Report report;
 
     private float result;
+
+    @ManyToOne
+    @JoinColumn(name = "test_attribute_id")
+    private TestAttribute testAttribute;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
 
 
 
