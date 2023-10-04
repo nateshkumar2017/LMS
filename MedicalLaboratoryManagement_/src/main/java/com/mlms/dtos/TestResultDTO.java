@@ -14,6 +14,4 @@ public class TestResultDTO {
     private Long orderId;
     private Long testId;
     private List<TestAttributeResultDTO> attributesResults;
-   // private Long patientId;
-    //private String testName;
 }

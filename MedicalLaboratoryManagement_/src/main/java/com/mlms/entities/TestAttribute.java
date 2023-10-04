@@ -27,8 +27,4 @@ public class TestAttribute {
     @JsonBackReference
     private Test test;
 
-    //private
-
-
-
 }

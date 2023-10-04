@@ -6,28 +6,23 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//import org.springframework.data.jpa.repository.Temporal;
-
-//import javax.persistence.Entity;
-//import javax.persistence.Temporal;
-//import javax.persistence.TemporalType;
-import java.util.Date;
+import org.hibernate.annotations.Comment;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Component
 @Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-
-
-    //private User userId;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderCreatedDateTime;
@@ -51,17 +46,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "status_id")
     private ReportStatus reportStatus;
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
-
-
-
-//    public Order(User user) {
-//        this.user = user;
-//    }
 
 
 }

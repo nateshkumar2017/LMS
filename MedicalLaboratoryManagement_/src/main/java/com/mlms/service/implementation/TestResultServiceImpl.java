@@ -29,6 +29,9 @@ public class TestResultServiceImpl {
     @Autowired
     private PatientRepo patientRepository;
 
+    @Autowired
+    TestResult testResult;
+
 
 
 
@@ -80,7 +83,7 @@ public class TestResultServiceImpl {
             TestAttribute attribute = testAttributeRepository.findById(attributeId)
                     .orElseThrow(() -> new IllegalArgumentException("Test Attribute not found with ID: " + attributeId));
 
-            TestResult testResult = new TestResult();
+            //TestResult testResult = new TestResult();
             testResult.setOrder(order);
             testResult.setTest(test);
             testResult.setTestAttribute(attribute);
