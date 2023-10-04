@@ -3,7 +3,6 @@ package com.mlms.service;
 import com.mlms.entities.Patient;
 
 import java.util.List;
-
 public interface PatientServiceInt {
 
     public Patient createPatient(Patient patient);

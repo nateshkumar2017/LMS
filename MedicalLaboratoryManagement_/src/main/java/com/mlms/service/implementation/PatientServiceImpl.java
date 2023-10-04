@@ -1,16 +1,16 @@
-package com.mlms.service;
+package com.mlms.service.implementation;
 
 import com.mlms.entities.Patient;
 import com.mlms.repo.PatientRepo;
+import com.mlms.service.PatientServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PatientServiceImpl implements PatientServiceInt{
+public class PatientServiceImpl implements PatientServiceInt {
 
 
 

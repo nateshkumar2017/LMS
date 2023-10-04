@@ -1,14 +1,12 @@
 package com.mlms.controller;
 
 import com.mlms.dtos.ReportDTO;
-import com.mlms.entities.Report;
-import com.mlms.service.ReportGenerateServiceImpl;
+import com.mlms.service.implementation.ReportGenerateServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/report")
@@ -18,6 +16,7 @@ public class ReportController {
     private ReportGenerateServiceImpl reportService;
 
     @GetMapping("/generate")
+    @PreAuthorize("hasAuthority('ROLE_TECHNICIAN')")
     public ResponseEntity<ReportDTO> generateReport(@RequestParam Long orderId) {
         try {
             ReportDTO report = reportService.generateReport(orderId);

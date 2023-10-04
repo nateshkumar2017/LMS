@@ -3,15 +3,13 @@ package com.mlms.controller;
 import com.mlms.dtos.OrderDTO;
 import com.mlms.dtos.OrderResponseDTO;
 import com.mlms.dtos.OrderStatusDTO;
-import com.mlms.entities.Order;
-import com.mlms.service.OrderServiceImpl;
+import com.mlms.service.implementation.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/order")
@@ -25,6 +23,7 @@ public class OrderController {
 
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<OrderResponseDTO> createOrderAndInvoice(@RequestBody OrderDTO orderDTO) {
         try {
             OrderResponseDTO orderResponseDTO = orderService.createOrderAndInvoiceForPatient(orderDTO);
@@ -36,6 +35,7 @@ public class OrderController {
     }
 
     @GetMapping("/pending")
+    @PreAuthorize("hasAuthority('ROLE_TECHNICIAN')")
     public List<OrderStatusDTO> getPendingOrders() {
         return orderService.getPendingOrders();
     }

@@ -1,11 +1,10 @@
 package com.mlms.repo;
 
-import com.mlms.entities.TestResult;
+import com.mlms.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
-public interface ReportGenerateRepo extends JpaRepository<TestResult,String> {
-
+public interface RoleRepo  extends JpaRepository<Role, Integer> {
+    Role findByRole(String role);
 }

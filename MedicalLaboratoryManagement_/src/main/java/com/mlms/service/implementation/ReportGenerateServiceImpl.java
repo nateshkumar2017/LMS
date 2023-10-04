@@ -1,4 +1,4 @@
-package com.mlms.service;
+package com.mlms.service.implementation;
 
 import com.mlms.dtos.ReportDTO;
 import com.mlms.dtos.TestAttributeResultDTO;
@@ -8,7 +8,6 @@ import com.mlms.repo.TestRepo;
 import com.mlms.repo.TestResultRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +28,9 @@ public class ReportGenerateServiceImpl {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("Order not found with ID: " + orderId));
 
-
         Test test = order.getTest();
 
-
         Patient patient = order.getPatient();
-
 
         ReportDTO report = new ReportDTO();
         report.setPatientName(patient.getPatientName());
