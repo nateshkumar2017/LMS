@@ -19,7 +19,6 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-//Long
 
 
     private String testName;

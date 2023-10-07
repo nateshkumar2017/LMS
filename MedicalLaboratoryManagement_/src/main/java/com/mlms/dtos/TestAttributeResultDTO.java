@@ -4,20 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class TestAttributeResultDTO {
-
-//    private Long attributeId;
-//    //private Float result;
-////    private Long attributeId;
-//    private Long orderId;
-//    private Long testId;
-//    private List<TestAttributeResultDTO> attributeResults;
 
     @JsonIgnore
     private Long attributeId;

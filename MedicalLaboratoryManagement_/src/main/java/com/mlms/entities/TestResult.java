@@ -4,18 +4,19 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class TestResult {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    //hatao
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patientId;
@@ -39,9 +40,5 @@ public class TestResult {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-
-
-
-
 
 }

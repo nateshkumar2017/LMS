@@ -127,6 +127,18 @@ public class OrderServiceImpl {
     @Autowired
     private ReportStatusRepo reportStatusRepository;
 
+    @Autowired
+    Order order;
+
+    @Autowired
+    Invoice invoice;
+
+    @Autowired
+    OrderResponseDTO orderResponseDTO;
+
+    @Autowired
+    OrderStatusDTO orderStatusDTO;
+
     public OrderResponseDTO createOrderAndInvoiceForPatient(OrderDTO request) {
         Patient patient = patientRepository.findByContactNo(request.getContactNo());
 
@@ -140,7 +152,7 @@ public class OrderServiceImpl {
 
                 if (test != null) {
 
-                    Order order = new Order();
+                    //Order order = new Order();
                     order.setPatient(patient);
                     order.setTest(test);
                     ReportStatus pendingStatus = reportStatusRepository.findByStatus(ReportStatus.StatusType.PENDING);
@@ -151,7 +163,7 @@ public class OrderServiceImpl {
                     float testTotalAmount = calculateTotalAmount(test, request.getDiscount());
                     totalAmount += testTotalAmount;
 
-                    Invoice invoice = new Invoice();
+                    //Invoice invoice = new Invoice();
                     invoice.setPatient(patient);
                     invoice.setOrder(order);
                     invoice.setTotalAmount(testTotalAmount);
@@ -167,7 +179,7 @@ public class OrderServiceImpl {
 
             List<Order> createdOrders = orderRepository.saveAll(orders);
 
-            OrderResponseDTO orderResponseDTO = new OrderResponseDTO();
+            //OrderResponseDTO orderResponseDTO = new OrderResponseDTO();
             orderResponseDTO.setPatientId(patient.getId());
             orderResponseDTO.setPatientName(patient.getPatientName());
             orderResponseDTO.setPatientContactNo(patient.getContactNo());
@@ -218,12 +230,12 @@ public class OrderServiceImpl {
 
         List<OrderStatusDTO> orderStatusDTOs = pendingOrders.stream()
                 .map(order -> {
-                    OrderStatusDTO dto = new OrderStatusDTO();
-                    dto.setOrderId(order.getId());
-                    dto.setTestCode(order.getTest().getTestCode());
-                    dto.setPatientId(order.getPatient().getId());
+                   // OrderStatusDTO dto = new OrderStatusDTO();
+                    orderStatusDTO.setOrderId(order.getId());
+                    orderStatusDTO.setTestCode(order.getTest().getTestCode());
+                    orderStatusDTO.setPatientId(order.getPatient().getId());
                     // Set other fields based on your requirements
-                    return dto;
+                    return orderStatusDTO;
                 })
                 .collect(Collectors.toList());
 
